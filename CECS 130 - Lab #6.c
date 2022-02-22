@@ -1,0 +1,266 @@
+/*
+	Name: Robert Wickliffe
+	Description: Create a phone book to store the contacts of all your friends. ( Use an array of structures )
+	Section: CECS 130-01A
+	Date: February 21, 2022
+*/
+#include <stdio.h>
+
+// Valid Menu Operations
+enum Operations
+{
+	NONE = 0,
+	ADD = 1,
+	REMOVE = 2,
+	DISPLAY = 3,
+	EXIT = 4,
+	MAX_OPERATIONS = 5
+};
+
+// Contact Structure
+typedef struct
+{
+	char first[32];
+	char last[32];
+	char phone[9];
+} Contact;
+
+// Phone Book Structure
+typedef struct
+{
+	int length;
+	Contact* contacts;
+} PhoneBook;
+
+// Check if is a valid operation
+int IsValidOperation(int operation);
+
+// Print menu to console
+void PrintMenu();
+
+// Add a Contact to a Phone Book
+int AddContact(PhoneBook* book, Contact contact);
+
+// Remove a Contact to a Phone Book
+int RemoveContact(PhoneBook* book, int index);
+
+// Display Contacts in a Phone Book
+void DisplayContacts(PhoneBook* book);
+
+// Operation Functions
+int Add(PhoneBook* book);
+int Remove(PhoneBook* book);
+void Display(PhoneBook* book);
+
+int IsValidOperation(int operation)
+{
+	return (operation > NONE) && (operation < MAX_OPERATIONS);
+};
+
+void PrintMenu()
+{
+	printf("Phone Book\n");
+	printf("[1] Add Contact\n");
+	printf("[2] Remove Contact\n");
+	printf("[3] Display Contacts\n");
+	printf("[4] Exit\n\n");
+	printf("Please choose an option: ");	
+};
+
+int AddContact(PhoneBook* book, Contact contact)
+{
+	// Alocate space for current contacts + new contact
+	Contact* contacts = calloc(book->length + 1, sizeof(char) * 73);
+	
+	// If allocation failed
+	if(contacts == NULL)
+		return 0;
+	
+	// Add current contacts to array	
+	int i = 0;
+	
+	for(i = 0; i < book->length; ++i)
+		contacts[i] = book->contacts[i];
+	
+	// Add new contact to array
+	contacts[book->length] = contact;
+	
+	// Free previous array of contacts
+	free(book->contacts);
+	
+	// Set new pointer to contacts and increment length
+	book->contacts = contacts;
+	book->length++;
+	
+	return 1;
+};
+
+int RemoveContact(PhoneBook* book, int index)
+{
+	// If index is out of range
+	if((index < 0) || (index >= book->length))
+		return 0;
+	
+	// Allocate space for current contacts - removed contact
+	Contact* contacts = calloc(book->length - 1, sizeof(char) * 73);
+	
+	// If memory allocation failed
+	if(contacts == NULL)
+		return 0;
+		
+	// Add current contacts to array, ignoring removed contact
+	int i = 0;
+	int added = 0;
+	
+	for(i = 0; i < book->length - 1; ++i)
+	{
+		if(i != index)
+		{
+			contacts[added] = book->contacts[i];
+			added++;
+		};
+	};
+	
+	// Free previous array of contacts
+	free(book->contacts);
+	
+	// Set new pointer to contacts and decrement length
+	book->contacts = contacts;
+	book->length--;
+	
+	return 1;
+};
+
+void DisplayContacts(PhoneBook* book)
+{
+	// Loop through contacts array and print each contact information
+	int i = 0;
+	Contact* contacts = book->contacts;
+	
+	for(i = 0; i < book->length; ++i)
+		printf("[%d] %s %s ( %s )\n", (i + 1), contacts[i].first, contacts[i].last, contacts[i].phone);
+		
+	printf("\n");
+};
+
+int Add(PhoneBook* book)
+{
+	// Create new contact structure
+	Contact contact;
+	
+	// Request user to enter contact information
+	printf("Contact's First Name: ");
+	scanf("%31s", &contact.first);
+	
+	printf("Contact's Last Name: ");
+	scanf("%31s", &contact.last);
+	
+	printf("Contact's Phone Number ( XXX-XXXX ): ");
+	scanf("%8s", &contact.phone);
+	
+	// Attempt to add the contact and display result
+	if(AddContact(book, contact))
+		printf("+ Added new contact: %s %s ( %s )\n\n", contact.first, contact.last, contact.phone);
+	else
+		printf("- Failed to add contact\n\n");
+};
+
+int Remove(PhoneBook* book)
+{
+	// Index of contact to remove
+	int index = 0;
+	
+	// If there are no contacts
+	if(book->length < 1)
+	{
+		printf("There are no contacts to remove\n\n");
+		return;
+	};
+	
+	// Display contacts, for user to choose from
+	DisplayContacts(book);
+	
+	// Request user to enter an index
+	printf("Contact to remove ( Integer ): ");
+	scanf("%d", &index);
+	
+	// While index is not valid ask for another
+	while((index < 1) || (index > book->length))
+	{
+		printf("Please enter a valid contact: ");
+		scanf("%d", &index);	
+	};
+	
+	// Attempt to remove the contact and display result
+	if(RemoveContact(book, (index - 1)))
+		printf("+ Removed contact\n\n");
+	else
+		printf("- Failed to remove contact\n\n");
+};
+
+void Display(PhoneBook* book)
+{
+	// If there are no contacts to display
+	if(book->length < 1)
+	{
+		printf("There are no contacts to display\n\n");
+		return;
+	};
+	
+	// Display the contacts
+	DisplayContacts(book);
+};
+
+int main()
+{
+	// Create a new PhoneBook structure
+	PhoneBook book;
+	
+	// Reset PhoneBook member variables
+	book.length = 0;
+	book.contacts = NULL;
+	
+	int operation = NONE;
+	
+	// While the user does not want to exit
+	while(operation != EXIT)
+	{
+		if(operation == NONE)
+		{
+			PrintMenu();
+			scanf("%d", &operation);
+			continue;
+		}
+		else if(!IsValidOperation(operation))
+		{
+			printf("Please enter a valid option: ");
+			scanf("%d", &operation);
+			continue;
+		};
+		
+		switch(operation)
+		{
+			// Add a new contact
+			case ADD:
+				Add(&book);
+			break;
+			
+			// Remove a contact
+			case REMOVE:
+				Remove(&book);
+			break;
+			
+			// Display all contacts
+			case DISPLAY:
+				Display(&book);
+			break;
+		};
+		
+		// Reset operation to NONE
+		operation = NONE;
+	};
+	
+	printf("Goodbye!");
+	
+	return 0;
+};
