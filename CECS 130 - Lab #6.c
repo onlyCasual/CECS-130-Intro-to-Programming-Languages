@@ -5,11 +5,6 @@
 	Date: February 21, 2022
 */
 
-/*
-	To Do:
-		- Fix error when removing contacts ( removing )
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
 
