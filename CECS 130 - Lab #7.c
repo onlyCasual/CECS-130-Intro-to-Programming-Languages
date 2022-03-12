@@ -2,11 +2,16 @@
 	Name: Robert Wickliffe
 	Description: Create a phone book to store the contacts of all your friends. ( Use an array of structures )
 	Section: CECS 130-01A
-	Date: February 21, 2022
+	Date: February 28, 2022
 */
+
+// Contacts are automatically sorted alphabetically by lst name upon being added
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+#include <string.h>
+#include <ctype.h>
 
 // Valid Menu Operations
 enum Operations
@@ -15,8 +20,11 @@ enum Operations
 	ADD = 1,
 	REMOVE = 2,
 	DISPLAY = 3,
-	EXIT = 4,
-	MAX_OPERATIONS = 5
+	FIND = 4,
+	RANDOM = 5,
+	CLEAR = 6,
+	EXIT = 7,
+	MAX_OPERATIONS = 8
 };
 
 // Contact Structure
@@ -27,7 +35,7 @@ typedef struct
 	char phone[9];
 } Contact;
 
-// Phone Book Structure 
+// Phone Book Structure
 typedef struct
 {
 	unsigned int length;
@@ -36,6 +44,12 @@ typedef struct
 
 // Check if is a valid operation
 int IsValidOperation(int operation);
+
+// Generate a psuedo-random number ( 0 <= num < max )
+int Random(int max);
+
+// Phone Book array element modification
+void Insert(Contact* arr, Contact* contact, int index, unsigned int length);
 
 // Print menu to console
 void PrintMenu();
@@ -49,14 +63,62 @@ int RemoveContact(PhoneBook* book, unsigned int index);
 // Display Contacts in a Phone Book
 void DisplayContacts(PhoneBook* book);
 
+// Get a contact in Phone Book, given first or last name
+Contact* GetContact(PhoneBook* book, const char* name);
+
+// Alphabetically sort list by last name
+void SortContacts(PhoneBook* book);
+
 // Operation Functions
 void Add(PhoneBook* book);
 void Remove(PhoneBook* book);
 void Display(PhoneBook* book);
+void RandomContact(PhoneBook* book);
+void ClearContacts(PhoneBook* book);
+void FindContact(PhoneBook* book);
 
 int IsValidOperation(int operation)
 {
 	return (operation > NONE) && (operation < MAX_OPERATIONS);
+};
+
+int Random(int max)
+{
+	srand(time(NULL));
+	return rand() % max;
+};
+
+void Insert(Contact* arr, Contact* contact, int index, unsigned int length)
+{
+	// Index out of range
+	if (index > (length - 1))
+		return;
+
+	// Allocate space for modified array
+	Contact* new_arr = calloc(length, sizeof(Contact));
+
+	// Loop throgh array and add previous elements to new array
+	unsigned int i = 0;
+
+	if (new_arr == NULL)
+		return;
+
+	for (i = 0; i < length; ++i)
+	{
+		if (i < index)
+			new_arr[i] = arr[i];
+		else if (i > index)
+			new_arr[i] = arr[i - 1];
+	};
+
+	// Add new element to array
+	new_arr[index] = *contact;
+	
+	// Copy modified array to original array
+	memcpy(arr, new_arr, sizeof(Contact) * length);
+
+	// Free modified array
+	free(new_arr);
 };
 
 void PrintMenu()
@@ -65,7 +127,10 @@ void PrintMenu()
 	printf("[1] Add Contact\n");
 	printf("[2] Remove Contact\n");
 	printf("[3] Display Contacts\n");
-	printf("[4] Exit\n\n");
+	printf("[4] Find Contact\n");
+	printf("[5] Random Contact\n");
+	printf("[6] Clear Contacts\n");
+	printf("[7] Exit\n\n");
 	printf("Please choose an option: ");
 };
 
@@ -145,6 +210,82 @@ void DisplayContacts(PhoneBook* book)
 	printf("\n");
 };
 
+Contact* GetContact(PhoneBook* book, const char* name)
+{
+	// Loop through contacts and find corresponding contact
+	unsigned int i = 0;
+
+	for (i = 0; i < book->length; ++i)
+	{
+		Contact* contact = &book->contacts[i];
+
+		if (!strcmp(tolower(contact->last), tolower(name)) ||
+			!strcmp(tolower(contact->first), tolower(name)))
+		{
+			return contact;
+		};
+	};
+
+	return NULL;
+};
+
+void SortContacts(PhoneBook* book)
+{
+	// If no contacts or only a single contact are added to the phone book
+	if (book->length < 2)
+		return;
+
+	// Allocate space for sorted contacts
+	Contact* contacts = calloc(book->length, sizeof(Contact));
+
+	// Loop through contacts and sort alphabetically by last ( Ascending )
+	unsigned int i = 0;
+	unsigned int v = 0;
+	int length = 2;
+
+	for (i = 0; i < book->length; ++i)
+	{
+		if (i < 1)
+			contacts[i] = book->contacts[i];
+		else
+		{
+			for (v = 0; v < i; ++v)
+			{
+				int comaparison = strcoll(book->contacts[i].last, contacts[v].last);
+
+				if (comaparison < 0)
+				{
+					Insert(contacts, &book->contacts[i], v, length);
+					break;
+				}
+				else if (comaparison > 0)
+				{
+					if (v == (i - 1))
+					{
+						Insert(contacts, &book->contacts[i], v + 1, length);
+						break;
+					}
+					else
+						continue;
+				}
+				else
+				{
+					Insert(contacts, &book->contacts[i], v, length);
+					break;
+				};
+			};
+
+			length++;
+		};
+	};
+	
+	// Free previous array of contacts
+	free(book->contacts);
+
+	// Set phone book contacts pointer to sorted array
+	book->contacts = contacts;
+};
+
 void Add(PhoneBook* book)
 {
 	// Create new contact structure
@@ -216,6 +357,59 @@ void Display(PhoneBook* book)
 	DisplayContacts(book);
 };
 
+void RandomContact(PhoneBook* book)
+{
+	// If there are no contacts in bool
+	if (book->length < 1)
+	{
+		printf("There are no contacts to choose from\n\n");
+		return;
+	};
+	
+	// Retreive a random contact from array
+	Contact contact = book->contacts[Random(book->length)];
+
+	printf("%s, %s ( %s )\n\n", contact.last, contact.first, contact.phone);
+};
+
+void ClearContacts(PhoneBook* book)
+{
+	// If there are no contacts to remove
+	if (book->length < 1)
+	{
+		printf("There are no contacts to remove\n\n");
+		return;
+	};
+
+	// Free previous array of contacts
+	free(book->contacts);
+	
+	// Reset PhoneBook member variables
+	book->contacts = NULL;
+	book->length = 0;
+
+	printf("All contacts have been removed\n\n");
+};
+
+void FindContact(PhoneBook* book)
+{
+	// Where search name will be stored
+	char name[32];
+
+	// Request the user to enter a name
+	printf("Contact's First or Last Name: ");
+	scanf("%31s", name);
+
+	// Get contact with corrsponding name
+	Contact* contact = GetContact(book, name);
+
+	// See if contact was found and display result
+	if (contact != NULL)
+		printf("+ Contact: %s, %s ( %s )\n\n", contact->last, contact->first, contact->phone);
+	else
+		printf("- Failed to find contact\n\n");
+};
+
 int main()
 {
 	// Create a new PhoneBook structure
@@ -259,12 +453,31 @@ int main()
 			case DISPLAY:
 				Display(&book);
 			break;
+
+			// Find a contact
+			case FIND:
+				FindContact(&book);
+			break;
+			
+			// Get a random contact
+			case RANDOM:
+				RandomContact(&book);
+			break;
+
+			// Clear all contacts
+			case CLEAR:
+				ClearContacts(&book);
+			break;
 		};
 
 		// Reset operation to NONE
 		operation = NONE;
+
+		// Sort contact list ( Ascending )
+		SortContacts(&book);
 	};
 
+	// Free array of contacts
 	free(book.contacts);
 
 	printf("Goodbye!");
