@@ -53,7 +53,29 @@ personal information your program should ***output a short story*** *(at least o
 story is up to you, but please keeps it clean.) The generated story should be somewhat ***different
 every time the program is run*** *(randomly generate alternative endings, randomly select different
 descriptions of objects (blue car, green car, red car), etc.* Your program should make use of
-***pointers*** and ***arrays*** to deal with strings. \
+***pointers*** and ***arrays*** to deal with strings.\
 *You program MUST be bug-free, well commented (Including author’s
 information, program description, lab section, date, etc.).*\
 File Link: [Lab 5 - Story](CECS%20130%20-%20Lab%20%235.c)
+
+### Lab 6 ( Phone Book )
+**Programming assignment ( 100 pts ):** Write a program that uses an ***array of structures*** to hold
+contact information for your friends. The program should allow the user to enter as many friends
+as the user wants. ***Create functions to add or delete entries*** in the phone book and to ***print valid
+phone book entries***. *Do not display phone book entries that are invalid or NULL (0)*. You can
+assume that all people have unique names. Make sure you ***allocate*** and ***free memory*** as
+necessary.\
+*You program MUST be bug-free, well commented (Including author’s
+information, program description, lab section, date, etc.).*\
+File Link: [Lab 6 - Phone Book](CECS%20130%20-%20Lab%20%236.c)
+
+### Lab 7 ( Phone Book Extended )
+**Programming assignment ( 100 pts ):** Add ***additional functionality*** to your phonebook program
+from [lab 6](CECS%20130%20-%20Lab%20%236.c). Make it possible for users to:
+1. Alphabetically sort the list of entries by name (first or last).
+2. Find a phone number for a given name.
+3. Randomly select a friend from the phonebook for you to call.
+4. Delete everyone from the phonebook at the same time.
+*You program MUST be bug-free, well commented (Including author’s
+information, program description, lab section, date, etc.).*\
+File Link: [Lab 7 - Phone Book Extended](CECS%20130%20-%20Lab%20%237.c)
