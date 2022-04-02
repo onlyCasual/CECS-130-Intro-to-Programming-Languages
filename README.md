@@ -75,7 +75,7 @@ from [lab 6](CECS%20130%20-%20Lab%20%236.c). Make it possible for users to:
 1. Alphabetically sort the list of entries by name (first or last).
 2. Find a phone number for a given name.
 3. Randomly select a friend from the phonebook for you to call.
-4. Delete everyone from the phonebook at the same time.
+4. Delete everyone from the phonebook at the same time./
 *You program MUST be bug-free, well commented (Including author’s
 information, program description, lab section, date, etc.).*\
 File Link: [Lab 7 - Phone Book Extended](CECS%20130%20-%20Lab%20%237.c)
