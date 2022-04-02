@@ -25,7 +25,7 @@ File Link: [Lab 2 - Foreign Currency Exchange](CECS%20130%20-%20Lab%20%232.c)
 **Programming assignment ( 100 pts ):** Write a computer program in ***C*** which will ***simulate a
 calculator***. Your calculator needs to support the ***five*** basic operations (addition, subtraction,
 multiplication, division and modulus) plus ***primality testing*** (natural number is prime if it has no
-non-trivial divisors). \
+non-trivial divisors).\
 *You program MUST be bug-free, well commented (Including author’s
 information, program description, lab section, date, etc.) and must demonstrate use of
 different escape sequences.*\
@@ -39,7 +39,7 @@ functionality to your calculator***. Include the ability to compute the ***facto
 *(Example: 4! = 1 * 2 * 3 *4 = 24)*, and an ***integer power of a number*** *(Example: 53 = 5 * 5 * 5 = 125)*.
 Finally, add an ***interesting mathematical function*** of your choosing which computes the ***first n
 numbers of a sequence of numbers*** and ***utilizes an array to store the result*** before displaying it
-*(Examples of mathematical sequences: Fibonacci, Primes)*. \
+*(Examples of mathematical sequences: Fibonacci, Primes)*.\
 *You program MUST be bug-free, user friendly (verify input from the user), well commented
-(Including author information, program description, lab section, date, etc.) *\
+(Including author information, program description, lab section, date, etc.)*\
 File Link: [Lab 4 - Calculator](CECS%20130%20-%20Lab%20%234.c)
