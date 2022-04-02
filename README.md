@@ -1,6 +1,6 @@
 # Intro to Programming Languages ( CECS 130 )
 
-## Lab 1 ( ASCII-Art Instructor )
+### Lab 1 ( ASCII-Art Instructor )
 > Create an ACSII-Art representation of your instructor
 ```
 Programming assignment: Write a computer program in C which will generate an
