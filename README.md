@@ -7,4 +7,4 @@ Yampolskiy***. \
 *You program MUST be bug-free, well commented (Including author’s
 information, program description, lab section, date, etc.) and must demonstrate use of
 different escape sequences.*
-
+File Link: [Lab 1](CECS 130 - Lab #1.c)
