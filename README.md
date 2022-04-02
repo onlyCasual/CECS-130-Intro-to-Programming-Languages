@@ -8,7 +8,7 @@ Yampolskiy***. \
 information, program description, lab section, date, etc.) and must demonstrate use of
 different escape sequences.*\
 File Link: [Lab 1 - ASCII-Art Instructor](CECS%20130%20-%20Lab%20%231.c)\
-\
+
 ### Lab 2 ( ASCII-Art Instructor )
 **Programming assignment ( 100 pts ):** Programming assignment (100 pts): Write a computer program in ***C*** which will request
 the user to enter a number representing the amount of ***foreign currency*** he/she would
