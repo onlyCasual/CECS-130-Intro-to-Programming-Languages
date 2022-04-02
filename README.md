@@ -42,4 +42,18 @@ numbers of a sequence of numbers*** and ***utilizes an array to store the result
 *(Examples of mathematical sequences: Fibonacci, Primes)*.\
 *You program MUST be bug-free, user friendly (verify input from the user), well commented
 (Including author information, program description, lab section, date, etc.)*\
-File Link: [Lab 4 - Calculator](CECS%20130%20-%20Lab%20%234.c)
+File Link: [Lab 4 - Calculator Extended](CECS%20130%20-%20Lab%20%234.c)
+
+### Lab 5 ( Story )
+**Programming assignment ( 100 pts ):** Write a program which generates ***interactive stories***. You
+program should begin by ***asking the user a number of questions*** such as: *what is your name?
+How old are you? What is your favorite color? Etc.* After obtaining a sufficient amount of
+personal information your program should ***output a short story*** *(at least one paragraph)* which
+***incorporates user’s personal information*** you have obtained via questioning. (The topic of the
+story is up to you, but please keeps it clean.) The generated story should be somewhat ***different
+every time the program is run*** *(randomly generate alternative endings, randomly select different
+descriptions of objects (blue car, green car, red car), etc.* Your program should make use of
+***pointers*** and ***arrays*** to deal with strings. \
+*You program MUST be bug-free, well commented (Including author’s
+information, program description, lab section, date, etc.).*\
+File Link: [Lab 5 - Story](CECS%20130%20-%20Lab%20%235.c)
