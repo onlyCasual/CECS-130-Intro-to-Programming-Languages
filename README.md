@@ -130,18 +130,18 @@ File Link: [Lab 10 - 3D Tic-Tac-Toe](CECS%20130%20-%20Lab%20%2310/)
 **Programming assignment ( 100 pts ):** Your assignment is to create (in the ***C++*** programming
 language, using good ***OOP principles*** (***namespaces***, etc.)) an ***illness symptoms checker***.\
 *(Note: Your code should use Inheritance (Base class, and Derived class)*\
-Submission:\
+Submission:
 1. The code of your program.
-2. A report that includes: a brief explanation of each part of your code, and a screenshot of the final report produced by your program./
-\
-Description:\
+2. A report that includes: a brief explanation of each part of your code, and a screenshot of the final report produced by your program.
+
+Description:
 1. Print table that shows the symptoms for ***COVID-19, Cold, and Flu***.
 2. Ask the user to ***enter the number*** of patients he/she wants to check. 
 3. Generate Symptoms ***Randomly*** for each patient.
 4. ***Seven Symptoms***: Each Symptom has value. *( Present or Absent )*
 5. After generating Symptoms randomly for all patients please check each patient if he/she has COVID-19, Cold, or Flu.
 6. If the patient’s symptoms ***do not*** match with symptoms of COVID-19, Cold, or Flu then he/she has ***other illness***.
-7. ***Final Report Stating:*** # of Patients with COVID-19, # of Patients with Cold, # of Patients with Flu, # of Patients with Other Illness, and, % for Each Illness.\
+7. ***Final Report Stating:*** # of Patients with COVID-19, # of Patients with Cold, # of Patients with Flu, # of Patients with Other Illness, and, % for Each Illness.
 
 *You program MUST be bug-free, well commented (Including author’s
 information, program description, lab section, date, etc.).*\
