@@ -2,10 +2,8 @@
 	Name: Robert Wickliffe
 	Description: Create a phone book to store the contacts of all your friends. ( Use an array of structures )
 	Section: CECS 130-01A
-	Date: February 28, 2022
+	Date: March 25, 2022
 */
-
-// Contacts are automatically sorted alphabetically by lst name upon being added
 
 #include <stdio.h>
 #include <stdlib.h>

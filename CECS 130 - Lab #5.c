@@ -2,8 +2,9 @@
 	Name: Robert Wickliffe
 	Description: Ask the user questions and create a psuedo-random short story with their answers.
 	Section: CECS 130-01A
-	Date: February 13, 2022
+	Date: February 18, 2022
 */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>

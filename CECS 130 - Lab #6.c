@@ -2,7 +2,7 @@
 	Name: Robert Wickliffe
 	Description: Create a phone book to store the contacts of all your friends. ( Use an array of structures )
 	Section: CECS 130-01A
-	Date: February 21, 2022
+	Date: March 4, 2022
 */
 
 #include <stdio.h>

@@ -2,8 +2,9 @@
 	Name: Robert Wickliffe
 	Description: Create an ASCII-art table that shows currency conversions. ( 6 currencies minimum )
 	Section: CECS 130-01A
-	Date: Janauary 19, 2022
+	Date: Janauary 28, 2022
 */
+
 #include <stdio.h>
 
 // Exchange of currencies, in terms of 1 USD

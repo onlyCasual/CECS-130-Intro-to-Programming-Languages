@@ -2,8 +2,9 @@
 	Name: Robert Wickliffe
 	Description: Create a calculator that supports 5 basic operations and primality testing.
 	Section: CECS 130-01A
-	Date: Janauary 24, 2022
+	Date: February 4, 2022
 */
+
 #include <stdio.h>
 
 // Valid operation types
