@@ -9,7 +9,6 @@
 
 int Random(int max)
 {
-	srand(time(NULL));
 	return rand() % max;
 };
 

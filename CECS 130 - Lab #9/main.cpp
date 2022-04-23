@@ -9,6 +9,9 @@
 
 int main()
 {
+	// Seed rand
+	srand(time(NULL));
+
 	// Create a new Game instance
 	Game game = Game(3);
 	char play = ' ';
