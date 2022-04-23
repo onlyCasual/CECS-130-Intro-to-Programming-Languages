@@ -26,7 +26,7 @@ namespace Symptoms
 		HEADACHE = 16,
 		SNEEZE = 32,
 		FATIGUE = 64,
-		MAX = 8
+		MAX = 7
 	};
 };
 
