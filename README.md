@@ -130,6 +130,7 @@ File Link: [Lab 10 - 3D Tic-Tac-Toe](CECS%20130%20-%20Lab%20%2310/)
 **Programming assignment ( 100 pts ):** Your assignment is to create (in the ***C++*** programming
 language, using good ***OOP principles*** (***namespaces***, etc.)) an ***illness symptoms checker***.\
 *(Note: Your code should use Inheritance (Base class, and Derived class)*\
+\
 Submission:
 1. The code of your program.
 2. A report that includes: a brief explanation of each part of your code, and a screenshot of the final report produced by your program.
