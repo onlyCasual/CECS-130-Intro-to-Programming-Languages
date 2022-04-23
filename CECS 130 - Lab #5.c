@@ -5,6 +5,7 @@
 	Date: February 13, 2022
 */
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 
 // Structure options
@@ -132,7 +133,6 @@ typedef struct
 // Generate a psuedo-random number ( 0 <= num < max )
 int Random(int max)
 {
-	srand(time(NULL));
 	return rand() % max;
 };
 
@@ -164,6 +164,9 @@ void GenerateStory(Answers* answers)
 
 int main()
 {	
+	// Seed rand
+	srand(time(NULL));
+
 	// User answers
 	Answers answers;
 

@@ -90,7 +90,6 @@ int IsValidOperation(int operation)
 
 int Random(int max)
 {
-	srand(time(NULL));
 	return rand() % max;
 };
 
@@ -466,6 +465,9 @@ void Save(PhoneBook* book)
 
 int main()
 {
+	// Seed rand
+	srand(time(NULL));
+
 	// Create a new PhoneBook structure
 	PhoneBook book;
 
