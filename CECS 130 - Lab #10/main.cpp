@@ -1,8 +1,8 @@
 /*
 	Name: Robert Wickliffe
-	Description: Create a game of Tic-Tac-Toe
+	Description: Create a 3D game of Tic-Tac-Toe.
 	Section: CECS 130-01A
-	Date: February 28, 2022
+	Date: April 15, 2022
 */
 
 #include "Game3D.h"

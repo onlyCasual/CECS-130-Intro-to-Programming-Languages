@@ -1,3 +1,10 @@
+/*
+	Name: Robert Wickliffe
+	Description: Create a 3D game of Tic-Tac-Toe.
+	Section: CECS 130-01A
+	Date: April 15, 2022
+*/
+
 #pragma once
 #include "Game.h"
 
