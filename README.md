@@ -113,7 +113,7 @@ File Link: [Lab 9 - Tic-Tac-Toe](CECS%20130%20-%20Lab%20%239/)
 ### Lab 10 ( 3D Tic-Tac-Toe )
 **Programming assignment ( 100 pts ):** In the ***C++*** programming language write a program
 capable of ***playing 3D Tic-Tac-Toe against the user***. Your program should use ***OOP concepts*** in
-its design. Use Inheritance to create a derived class from your [Lab #9](CECS%20130%20-%20Lab%20%239/) Tic-Tac-Toe class. You
+its design. Use Inheritance to create a derived class from your [lab 9](CECS%20130%20-%20Lab%20%239/) Tic-Tac-Toe class. You
 can use ***ASCII art*** to generate and display the ***3x3x3*** playing board. *The program should
 randomly decide who goes first computer or user. Your program should know and inform the
 user if an illegal move was made (cell already occupied).* The program should also *keep the
